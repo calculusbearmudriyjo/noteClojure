@@ -24,8 +24,11 @@
        (let [notes [1 2 3 4 5]]
          (views/index notes)))
 
-  (GET "/addNote" []
+  (GET "/note" []
        (views/addNote))
+
+  (POST "/addNote" [message]
+    (views/dump [message]))
 
   (route/not-found "Ничего не найдено")
   )

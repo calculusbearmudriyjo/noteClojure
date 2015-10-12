@@ -33,6 +33,10 @@
    [:body
     (form-to {:enctype "multipart/form-data"} [:post "/addNote"]
     (text-field {:name "message"} "message")
-    (submit-button {:name "submit"} "save"))
+    (submit-button {:name "submit"} "save")
+    (anti-forgery-field))
     ]
    ))
+
+   (defn dump [note]
+     (println note))
