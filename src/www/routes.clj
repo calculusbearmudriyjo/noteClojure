@@ -24,6 +24,8 @@
        (let [notes [1 2 3 4 5]]
          (views/index notes)))
 
-  (route/not-found "Ничего не найдено")
+  (GET "/addNote" []
+       (views/addNote))
 
+  (route/not-found "Ничего не найдено")
   )
