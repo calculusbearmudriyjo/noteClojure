@@ -14,6 +14,8 @@
 
 (defroutes main-routes
 
+  (route/resources "/")
+
   (GET "/note/:id"
        [id]
        ;(let [note (db/getNote id)]

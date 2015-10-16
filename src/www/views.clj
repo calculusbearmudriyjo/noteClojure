@@ -6,11 +6,19 @@
    [ring.util.anti-forgery :refer [anti-forgery-field]])
   (:use [hiccup.form]))
 
+(defn head [title]
+  [:head
+    [:title (str title)]
+    (page/include-css "/css/bootstrap.min.css")
+    (page/include-css "/css/main.css")
+    (page/include-js "/js/jquery-2.1.4.min.js")
+    (page/include-js "/js/bootstrap.min.js")
+    (page/include-js "/js/main.js")
+    ])
+
 (defn index [notes]
   (page/html5
-   [:head
-    [:title "My Notes"]
-    ]
+   (head "Main page")
    [:body
     [:p "My notes"]
     [:ul
@@ -23,13 +31,11 @@
 
 (defn note [note]
   (page/html5
-   [:head
-    [:title (str note)]]))
+    (head note)))
 
 (defn addNote []
   (page/html5
-   [:head
-    [:title "Form add note"]]
+   (head "Form add note")
    [:body
     (form-to {:enctype "multipart/form-data"} [:post "/addNote"]
     (text-field {:name "message"} "message")
@@ -38,5 +44,9 @@
     ]
    ))
 
-   (defn dump [note]
-     (println note))
+(defn dump [message]
+  (page/html5
+   (head "dump")
+   [:body
+    [:p (apply str message)]])
+  )
