@@ -6,6 +6,7 @@
                  [compojure "1.3.1"]
                  [ring/ring-defaults "0.1.2"]
                  [hiccup "1.0.5"]
+                 [selmer "0.8.2"]
                  [clojure.joda-time "0.6.0"]
                  [org.clojure/java.jdbc "0.4.1"]
                  [org.postgresql/postgresql "9.4-1201-jdbc41"]]
