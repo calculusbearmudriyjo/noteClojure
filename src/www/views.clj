@@ -51,10 +51,10 @@
    )
   )
 
-(defn note [note]
+(defn note [notes]
   (render
      "base.html"
-    {:note note}))
+    {:notes notes}))
 
 (defn addNote []
   (page/html5

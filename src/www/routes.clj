@@ -19,7 +19,7 @@
   (GET "/note/:id"
        [id]
        ;(let [note (db/getNote id)]
-       (let [note [1]]
+       (let [note (db/getNotes)]
          (views/note note)))
 
   (GET "/" []

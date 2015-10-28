@@ -1,0 +1,4 @@
+.lein-deps-sum
+.lein-plugins
+lib
+target
