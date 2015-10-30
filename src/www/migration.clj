@@ -20,9 +20,14 @@
 	)
 
 (defn migrateNametoInt [string]
-	(Integer. (subs string 0 10)))
+	(Integer. (subs string (- (count string)))
 
 (defn migrateUp []
+	(loop [migrations (getSortedMigrate)]
+		(when (> (count migrations) 0)
+		(migrations/migrateUp (load-file (first migrations)))
+		(recur (next migrations)))
+		)
 	)
 
 (defn migrateDown []
