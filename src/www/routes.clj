@@ -1,33 +1,25 @@
 (ns www.routes
   (:require
-
    [compojure.core :refer [defroutes GET POST]]
    [compojure.route :as route]
-
    [www.controllers :as controllers]
-
    [www.views :as views]
-
-   [www.db :as db]
-   )
-  )
+   [www.db :as db]))
 
 (defroutes main-routes
-
   (route/resources "/")
 
+  (GET "/note"
+      []
+      (controllers/getNote))
+
   (GET "/note/:id"
-       [id]
-       ;(let [note (db/getNote id)]
-       (let [note (db/getNotes)]
-         (views/note note)))
+      [id]
+      (controllers/getNote id))
 
-  (GET "/" []
-       (let [notes [1 2 3 4 5]]
-         (views/index notes)))
-
-  (GET "/note" []
-       (views/addNote))
+  (GET "/delete/note/:id"
+    [id]
+    (controllers/deleteNote id))
 
   (POST "/addNote" [message]
     (views/dump [message]))

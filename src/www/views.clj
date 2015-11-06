@@ -56,6 +56,15 @@
      "base.html"
     {:notes notes}))
 
+(defn deleteNote [note]
+  (render
+     "delete.html"
+     (let  [note (first note)]
+     {:message (get note :message)
+      :id (get note :id)
+      :created_at (get note :created_at)}
+      )))
+
 (defn addNote []
   (page/html5
    (head "Form add note")

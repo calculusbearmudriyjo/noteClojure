@@ -11,5 +11,25 @@
 
 (defentity note)
 
-(defn getNotes []
-	(into [] (select note)))
+(defn getNote
+	
+	([] (into [] (select note)))
+	
+	([id] (into [] 
+		(select note 
+			(where {:id id})
+			)
+		)
+	))
+
+(defn removeNote [id] 
+	(let [deleteRes 
+		(select note 
+			(where {:id id})
+			)]
+
+		(delete note 
+			(where {:id id})
+			)
+		deleteRes
+	))
