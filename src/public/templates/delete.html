@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>{{ title }}</title>
+	{% for href in styles %}
+		<link href="{{ href }}" rel="stylesheet" media="all">
+	{% endfor %}
+	{% for src in scripts %}
+		<script type="text/javascript" src="{{ src }}"></script>
+	{% endfor %}
+</head>
+<body>
+		<li>DELETE NOTE {{ id }} message "{{ message }}" - create at - {{ created_at }}</li>
+</body>
+</html>
