@@ -1,7 +1,6 @@
-(ns www.db
+(ns www.migration
   (:use 
-  	[korma.db]
-  	[korma.core])
+  	[korma.db])
 )
 
 (defdb db (postgres {:db "note"
@@ -24,6 +23,11 @@
 
 (defn callFn [nsWithFn] (let [func (ns-resolve *ns* (symbol nsWithFn))] (apply func [])))
 
+(defn removeExt [fileName] 
+	(subs fileName 0 (- (count fileName) 4)))
+
+(defn executeSqls [sqlCommands]
+	(map korma.core/exec sqlCommands))
 
 (defn migrateUp []
 	(loop [migrations (getSortedMigrate)]
@@ -31,7 +35,7 @@
 		(when-let [nameSpace (first migrations)]
 		(println nameSpace)	
 		(load-file (clojure.string/join "/" [migrateProjectPath nameSpace]))
-		(callFn (clojure.string/join "/" [(subs nameSpace 0 (- (count nameSpace) 4)) "migrateUp"])))
+		(executeSqls (callFn (clojure.string/join "/" [(removeExt nameSpace) "migrateUp"]))))
 		(recur (next migrations)))
 		)
 	)
