@@ -12,8 +12,21 @@
 	{% endfor %}
 </head>
 <body>
-	{% for note in notes %}
-		<li>{{ note.id }} message "{{ note.message }}" - create at - {{ note.created_at }}</li>
-	{% endfor %}
+	<div class="container">
+		<div class="jumbotron">
+			<h1>Note</h1>
+			<div class="col-lg-6">
+			    <div class="input-group">
+			      <input type="text" class="form-control" id="message">
+			      <span class="input-group-btn">
+			        <button class="btn btn-default" type="button" id="send">Add</button>
+			      </span>
+			    </div><!-- /input-group -->
+			  </div><!-- /.col-lg-6 -->
+				{% for note in notes %}
+					<li>{{ note.id }} message "{{ note.message }}" - create at - {{ note.created_at }}</li>
+				{% endfor %}
+		</div>
+	</div>
 </body>
 </html>

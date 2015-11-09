@@ -15,10 +15,18 @@
 	[message]
 	(redirect "/"))
 
+(defn addNote
+	"add note"
+	[message]
+	(db/addNote message))
+
 (defn editNote
 	"edit note"
 	[id]
 	(redirect "/"))
+
+(defn getList
+	 (into [] (db/getNote)))
 
 (defn getNote
 	"get Note"

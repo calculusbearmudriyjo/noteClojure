@@ -13,6 +13,10 @@
       []
       (controllers/getNote))
 
+  (GET "/list"
+    []
+    (controllers/getList))
+
   (GET "/note/:id"
       [id]
       (controllers/getNote id))
@@ -21,8 +25,11 @@
     [id]
     (controllers/deleteNote id))
 
-  (POST "/addNote" [message]
-    (views/dump [message]))
+  (GET "/" []
+    (views/note []))
+
+  (GET "/add" [message]
+    (controllers/addNote [message]))
 
   (route/not-found "Ничего не найдено")
   )

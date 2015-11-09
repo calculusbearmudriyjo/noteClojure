@@ -12,15 +12,14 @@
 (defentity note)
 
 (defn getNote
-	
 	([] (into [] (select note)))
-	
 	([id] (into [] 
 		(select note 
-			(where {:id id})
-			)
-		)
-	))
+			(where {:id id})))))
+
+(defn addNote [message]
+	(insert note (values {:message message}))
+	"true")
 
 (defn removeNote [id] 
 	(let [deleteRes 
