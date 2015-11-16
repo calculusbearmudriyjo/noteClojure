@@ -21,6 +21,7 @@
 			      <span class="input-group-btn">
 			        <button class="btn btn-default" type="button" id="send">Add</button>
 			      </span>
+			      {{ anti-forgery|safe }}
 			    </div><!-- /input-group -->
 			  </div><!-- /.col-lg-6 -->
 				{% for note in notes %}

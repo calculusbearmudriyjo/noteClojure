@@ -1,39 +1,31 @@
 (ns www.controllers
   (:require
+   [ring.util.response :refer [response]]
+   [ring.middleware.json :refer [wrap-json-params]]
    [ring.util.response :refer [redirect]]
    [www.db :as db]
    [www.views :as views]))
 
-(defn deleteNote
-  "delete note"
-  [id]
+(defn deleteNote [id]
     (let [note (db/removeNote (Integer/parseInt id))]
     	(views/deleteNote note)))
 
-(defn createNote
-	"create note"
-	[message]
+(defn createNote [message]
 	(redirect "/"))
 
-(defn addNote
-	"add note"
-	[message]
+(defn addNote [message]
 	(db/addNote message))
 
-(defn editNote
-	"edit note"
-	[id]
+(defn editNote [id]
 	(redirect "/"))
 
-(defn getList
+(defn getList []
 	 (into [] (db/getNote)))
+		; (wrap-json-response (response {:data "data"})))
 
 (defn getNote
-	"get Note"
-	
 	([id] 
 		(let [note (db/getNote (Integer/parseInt id))]
-		(views/note note)))
-	
-	([]		(let [note (db/getNote)]
 		(views/note note))))
+	; (wrap-json-response (response	([](let [note (db/getNote)])))))
+	; (wrap-json-params (response 'load')))

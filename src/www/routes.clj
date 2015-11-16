@@ -9,27 +9,23 @@
 (defroutes main-routes
   (route/resources "/")
 
-  (GET "/note"
-      []
+  (POST "/add" [message]
+    (controllers/addNote [message]))
+
+  (GET "/note" []
       (controllers/getNote))
 
-  (GET "/list"
-    []
+  (GET "/list" []
     (controllers/getList))
 
-  (GET "/note/:id"
-      [id]
+  (GET "/note/:id" [id]
       (controllers/getNote id))
 
-  (GET "/delete/note/:id"
-    [id]
+  (GET "/delete/note/:id" [id]
     (controllers/deleteNote id))
 
   (GET "/" []
     (views/note []))
-
-  (GET "/add" [message]
-    (controllers/addNote [message]))
 
   (route/not-found "Ничего не найдено")
   )

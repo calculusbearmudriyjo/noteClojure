@@ -54,7 +54,8 @@
 (defn note [notes]
   (render
      "base.html"
-    {:notes notes}))
+    {:notes notes
+     :anti-forgery (anti-forgery-field)}))
 
 (defn deleteNote [note]
   (render

@@ -10,7 +10,8 @@
                  [clojure.joda-time "0.6.0"]
                  [org.clojure/java.jdbc "0.4.1"]
                  [org.postgresql/postgresql "9.4-1201-jdbc41"]
-                 [korma "0.4.2"]]
+                 [korma "0.4.2"]
+                 [ring/ring-json "0.4.0"]]
   :plugins [[lein-ring "0.8.13"]]
   :ring {:handler www.handler/app :auto-reload? true  :auto-refresh? true}
   :profiles
